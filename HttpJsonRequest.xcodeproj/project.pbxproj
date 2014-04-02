@@ -37,6 +37,10 @@
 		B62EBC6A17D025C5000731C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B62EBC6B17D025C5000731C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B62EBC6E17D025C5000731C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		B62EBC9217D02676000731C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B62EBC9417D02686000731C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B62EBC9617D02695000731C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B62EBC9817D026B4000731C0 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,10 @@
 		B62EBC4617D025C5000731C0 = {
 			isa = PBXGroup;
 			children = (
+				B62EBC9817D026B4000731C0 /* libz.1.2.5.dylib */,
+				B62EBC9617D02695000731C0 /* MobileCoreServices.framework */,
+				B62EBC9417D02686000731C0 /* SystemConfiguration.framework */,
+				B62EBC9217D02676000731C0 /* CFNetwork.framework */,
 				B62EBC5817D025C5000731C0 /* HttpJsonRequest */,
 				B62EBC5117D025C5000731C0 /* Frameworks */,
 				B62EBC5017D025C5000731C0 /* Products */,
@@ -260,6 +268,7 @@
 		B62EBC7317D025C5000731C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HttpJsonRequest/HttpJsonRequest-Prefix.pch";
 				INFOPLIST_FILE = "HttpJsonRequest/HttpJsonRequest-Info.plist";
@@ -271,6 +280,7 @@
 		B62EBC7417D025C5000731C0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HttpJsonRequest/HttpJsonRequest-Prefix.pch";
 				INFOPLIST_FILE = "HttpJsonRequest/HttpJsonRequest-Info.plist";
@@ -298,6 +308,7 @@
 				B62EBC7417D025C5000731C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

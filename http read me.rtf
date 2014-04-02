@@ -1,0 +1,95 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red109\green109\blue109;\red234\green234\blue234;
+\red37\green127\blue159;\red107\green0\blue3;\red0\green0\blue120;}
+\margl1440\margr1440\vieww20780\viewh14660\viewkind0
+\deftab720
+\pard\pardeftab720\ri-8379
+
+\f0\fs26 \cf2 This was used as a demonstration for a meetup.com group where I hosted a presentation on how to connect to a JSON web service.\
+\
+ASI http request connecting to a PHP page that will query the database and sends back a json string with data you parse and put into labels. The data should be in a dictionary and you get the label information out of the dictionary. This would be proper MVC.\
+\
+PHP - http://www.yourwebsite.com/path/to/JSON.php\
+Single PHP page that connects to database and returns either json data or an error code.\
+	- db hookup and return error if not connected\
+	- class bookLibrary\
+	- getBooks: the returned json list of books\
+		- query tbl_books for titles\
+		- pull into an array > bookArray\
+		- json_encode(bookArray);\
+		- ["PHP Programming", "C Programming", "Ruby Programming"]\
+		- pass to sendResponse with good code and json data\
+	- sendResponse: the response code header for messages\
+	- getStatusCode: the array status code messages\
+\
+Sending post form from iOS\
+\
+\pard\pardeftab720\sl360
+
+\f1\fs28 \cf3 \cb4 // Note that the URL is the "action" URL parameter from the form.\cf0 \
+\pard\pardeftab720\sl360
+\cf5 NSMutableURLRequest\cf0  *request = [\cf5 NSMutableURLRequest\cf0  requestWithURL:[NSURL @\cf6 "http://www.whereq.com:8079/answer.m"\cf0 ]];\
+[request setHTTPMethod:@\cf6 "POST"\cf0 ];\
+[request setValue:@\cf6 "application/x-www-form-urlencoded"\cf0  forHTTPHeaderField:@\cf6 "content-type"\cf0 ];\
+\pard\pardeftab720\sl360
+\cf3 //this is hard coded based on your suggested values, obviously you'd probably need to make this more dynamic based on your application's specific data to send\cf0 \
+\pard\pardeftab720\sl360
+\cf5 NSString\cf0  *postString = @\cf6 "paperid=6&q77=2&q80=blah"\cf0 ;\
+\cf5 NSData\cf0  *data = [postString dataUsingEncoding:NSUTF8StringEncoding];\
+[request setHTTPBody:data];\
+[request setValue:[\cf5 NSString\cf0  stringWithFormat:@\cf6 "%u"\cf0 , [data length]] forHTTPHeaderField:@\cf6 "Content-Length"\cf0 ];\
+[\cf5 NSURLConnection\cf0  connectionWithRequest:request \cf7 delegate\cf0 :self];\
+\pard\pardeftab720\ri-8379
+
+\f0\fs26 \cf2 \cb1 \
+-------- OR ---------\
+\
+\pard\pardeftab720\sl360
+
+\f1\fs28 \cf5 \cb4 NSData\cf0 * postData= [<yourJSON> dataUsingEncoding:NSUTF8StringEncoding];\
+\cf5 NSMutableURLRequest\cf0  *request = [\cf5 NSMutableURLRequest\cf0  requestWithURL:url];\
+  [request setHTTPMethod:@\cf6 "POST"\cf0 ];\
+  [request setValue:[\cf5 NSString\cf0  stringWithFormat:@\cf6 "%d"\cf0 , postData.length] forHTTPHeaderField:@\cf6 "Content-Length"\cf0 ];\
+  [request setValue:@\cf6 "application/x-www-form-urlencoded charset=utf-8"\cf0  forHTTPHeaderField:@\cf6 "Content-Type"\cf0 ];\
+  [request setHTTPBody:postData];\
+\
+  // \cf5 NSURLConnection\cf0  *connection = [[\cf5 NSURLConnection\cf0  alloc] initWithRequest:request \
+                                                                \cf7 delegate\cf0 :self];\
+  // for getting data back try this:\
+\cf5   NSData\cf0  *returnData = [\cf5 NSURLConnection\cf0   sendSynchronousRequest:request returningResponse:nil error:nil];\
+\cf5   NSString\cf0  *returnString = [[\cf5 NSString\cf0  alloc] initWithData:returnData encoding:NSUTF8StringEncoding];\
+\
+  [connection start];\
+\pard\pardeftab720\ri-8379
+
+\f0\fs26 \cf2 \cb1 \
+\
+ViewController.h\
+NSString *jsonReturnedString;\
+goGetJsonData\
+parseJsonStringToLabels\
+	- take the json data and put it inside the labels\
+areConnected\
+	- are we connected to the internet?\
+\
+ViewController.m\
+   goGetJsonData\
+	- go get json data from server and store in jsonReturnedString\
+	- json data will be returned in an array\
+   requestFinished\
+	- jsonReturnedString = [request responstString];\
+	- [self parseJsonStringToLabels];\
+ViewDidLoad \{\
+	[self goGetJsonData];	\
+\}\
+\
+\
+Part 2\
+Authentication\
+Send out data for request\
+	- picker list of what to get\
+Caching\
+\
+\
+}
