@@ -1,4 +1,4 @@
-This was used as a demonstration for a meetup.com group where I hosted a presentation on how to connect to a JSON web service.
+This was used as a demonstration for a meetup.com group where I hosted a presentation on how to connect to a JSON web service. The ASI files were added to show how to do this with a third party library but, we ran out of time.
 
 ASI http request connecting to a PHP page that will query the database and sends back a json string with data you parse and put into labels. The data should be in a dictionary and you get the label information out of the dictionary. This would be proper MVC.
 
